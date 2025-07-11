@@ -72,7 +72,7 @@ function App() {
 
   return (<>
     <Header />
-    <div>{movieList}</div>
+    <div>{movieList}</div> 
   </>
     
   );
