@@ -1,38 +1,60 @@
-.App {
-  text-align: center;
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Sedgwick+Ave+Display&display=swap");
+
+:root {
+  --white: #fff;
+  --black: #121212;
+  --darkBlack: #0E0E0E;
+  --grey: #787878;
+  --darkGrey: #2E2E2F;
+  --mediumGrey: #4B4B4B;
+  --lightGrey: #A5A5A5;
+  --yellow: #FEC654;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+body {
+  color: var(--white);
+  font-family: "Inter", sans-serif;
+  background: var(--black);
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+header {
+  background: url("../public/assets/images/heroBG.png") no-repeat;
+  background-position: 0 12%;
+  background-size: cover;
   display: flex;
-  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  justify-content: space-between;
+  padding: 46px;
+  min-height: 208px;
+  position: relative;
+
+  > h1 {
+    font-weight: 800;
+    font-size: 42px;
+    z-index: 1;
+  }
+
+  > button {
+    background: none;
+    outline: none;
+    border: none;
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--white);
+    z-index: 1;
+    font-family: "Inter", sans-serif;
+    cursor: pointer;
+  }
 }
 
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+header::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: var(--darkBlack);
+  opacity: 0.75;
+  z-index: 0;
 }
