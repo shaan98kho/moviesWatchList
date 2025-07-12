@@ -22,7 +22,7 @@ function App() {
       method: 'GET',
       headers: {
         accept: 'application/json',
-        Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI1YmQ5YmFhYjA2YzljYTU3NDY2ZmFhZTRkYzU3OTQ1MSIsIm5iZiI6MTc1MjIyMTcyOS4zMzc5OTk4LCJzdWIiOiI2ODcwYzgyMTc4N2I4ZTA4MjllZDcyMDkiLCJzY29wZXMiOlsiYXBpX3JlYWQiXSwidmVyc2lvbiI6MX0.5-wjahVig3N9X0wdSPU6uWDHG8E3H3ibf2NbN28cBrE'
+        Authorization: `Bearer ${process.env.PRIVATE_TMDB_API_KEY}`
       }
     }  
 
