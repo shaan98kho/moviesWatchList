@@ -17,8 +17,10 @@ export default function Card({
     const imgElement = new Image()
     imgElement.src = imgUrl
     return <div className="card">
-        {imgUrl? <img src={`https://image.tmdb.org/t/p/original${imgUrl}`} /> : <PiImageBrokenFill />}
-        <div>
+        <div className="card-img">
+            {imgUrl? <img src={`https://image.tmdb.org/t/p/original${imgUrl}`} /> : <PiImageBrokenFill />}
+        </div>
+        <div className="card-body">
             <h3>{title}<span><FaStar />{voteAvg}</span></h3>
             <div>
                 <span></span>

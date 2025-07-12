@@ -1,7 +1,8 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useMemo } from 'react'
 import Header from './components/Header'
 import Card from './components/Card'
 import './App.css'
+import SearchBar from './components/SearchBar'
 
 export interface Movie {
   imgUrl: string,
@@ -15,7 +16,9 @@ export interface Movie {
 }
 
 function App() {
-  const [movies, setMovies] = useState<Movie[]>()
+  const [movies, setMovies] = useState<Movie[]>([])
+  const [searchText, setSearchText] = useState("")
+  const [error, setError] = useState(false)
 
   useEffect(() => {
     const options = {
@@ -32,6 +35,7 @@ function App() {
         if(!res.ok) throw new Error(`error fetching data: ${res.status}`)
   
         const data = await res.json()
+        // console.log(data.results)
         const mappedMovies: Movie[] = data.results.map((movie:any) => ({
           imgUrl: movie.backdrop_path,
           id: movie.id,
@@ -47,6 +51,7 @@ function App() {
       }
       catch(e: any) {
         console.log(e)
+        setError(true)
         throw new Error(e)
       }
     }
@@ -54,10 +59,26 @@ function App() {
     fetchMovies()
   }, [])
 
-  if(!movies) return <div>Error loading movies, please try again</div>
-  console.log(movies)
+  const filtered = useMemo(() => {
+    if(!searchText) {
+      return movies
+    } else {
+      const query = searchText.toLowerCase()
+      const results = movies.filter(movie => movie.title.toLowerCase().includes(query))
 
-  const movieList = movies?.map(movie => {
+      return results
+    }
+  }, [movies, searchText])
+
+  if (error) {
+    return <div>Error loading movies. Please try again later.</div>;
+  }
+
+  if (movies.length === 0) {
+    return <div>Loading movies…</div>;
+  }
+
+  const movieList = filtered?.map(movie => {
     return <Card
       key={movie.id}
       imgUrl={movie.imgUrl}
@@ -73,7 +94,8 @@ function App() {
 
   return (<>
     <Header />
-    <div>{movieList}</div> 
+    <SearchBar searchText={searchText} setSearchText={setSearchText}/>
+    <div className='card-wrap'>{movieList}</div> 
   </>
     
   );
