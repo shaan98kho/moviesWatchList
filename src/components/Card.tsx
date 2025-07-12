@@ -1,6 +1,7 @@
 
 import { FaStar } from "react-icons/fa"
 import { PiImageBrokenFill } from "react-icons/pi"
+import { IoIosAddCircle } from "react-icons/io"
 import { Movie } from "../App"
 
 export default function Card({ 
@@ -15,14 +16,14 @@ export default function Card({
 }: Movie) {
     const imgElement = new Image()
     imgElement.src = imgUrl
-    return <div>
-        {imgUrl? <img src={imgUrl} /> : <PiImageBrokenFill />}
+    return <div className="card">
+        {imgUrl? <img src={`https://image.tmdb.org/t/p/original${imgUrl}`} /> : <PiImageBrokenFill />}
         <div>
             <h3>{title}<span><FaStar />{voteAvg}</span></h3>
             <div>
                 <span></span>
                 <span></span>
-                <button>Watchlist</button>
+                <button><IoIosAddCircle />Watchlist</button>
             </div>
             <div>
                 <p>{overview}</p>

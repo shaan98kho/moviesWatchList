@@ -55,6 +55,7 @@ function App() {
   }, [])
 
   if(!movies) return <div>Error loading movies, please try again</div>
+  console.log(movies)
 
   const movieList = movies?.map(movie => {
     return <Card

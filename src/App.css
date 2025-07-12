@@ -58,3 +58,45 @@ header::before {
   opacity: 0.75;
   z-index: 0;
 }
+
+.card {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+ 
+  > img {
+    max-width: 99px;
+    height: 100%;
+    width: 100%;
+  }
+
+  h3 {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    span {
+      svg {
+        color: var(--yellow);
+        padding-right: 4px;
+      }
+    }
+  }
+
+  button {
+    background: none;
+    outline: none;
+    cursor: pointer;
+    border: none;
+    color: var(--white);
+    display: flex;
+    align-items: end;
+    gap: 4px;
+    font-size: 12px;
+
+    svg {
+      width: 16px;
+      height: 16px;
+    }
+  }
+}
