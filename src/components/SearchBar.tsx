@@ -9,7 +9,7 @@ interface SearchProps {
 export default function SearchBar({searchText, setSearchText}: SearchProps) {
     const [inputText, setInputText] = useState('')
 
-    // console.log(searchText)
+    
     useEffect(() => {
         const searchTimeOut = setTimeout(() => setSearchText(inputText), 500)
 
@@ -19,7 +19,7 @@ export default function SearchBar({searchText, setSearchText}: SearchProps) {
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>):void => {
         setInputText(e.target.value)
     }
-
+    
     return <>
         <div className="input-wrap">
             <IoSearch />

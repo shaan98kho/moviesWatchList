@@ -19,6 +19,7 @@ function App() {
   const [movies, setMovies] = useState<Movie[]>([])
   const [searchText, setSearchText] = useState("")
   const [error, setError] = useState(false)
+  const [watchList, setWatchList] = useState<Movie[]>([])
 
   useEffect(() => {
     const options = {
