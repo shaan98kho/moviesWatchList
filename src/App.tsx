@@ -71,6 +71,20 @@ function App() {
     }
   }, [movies, searchText])
 
+  const addToWatchList = (id: string) => {
+    setWatchList(prev => {
+      if(prev.some(m=> m.id === id)) return prev
+      const movieToAdd = movies.find(m=> m.id === id)
+      return movieToAdd ? [...prev, movieToAdd]
+                        : prev
+
+    })
+  }
+
+  const watchListIds = new Set(watchList.map(m=>m.id))
+
+  console.log(watchList)
+
   if (error) {
     return <div>Error loading movies. Please try again later.</div>;
   }
@@ -90,6 +104,8 @@ function App() {
       id={movie.id}
       popularity={movie.popularity}
       releaseDate={movie.releaseDate}
+      addToWatchList={addToWatchList}
+      isInWatchList={watchListIds.has(movie.id)}
     />
   })
 

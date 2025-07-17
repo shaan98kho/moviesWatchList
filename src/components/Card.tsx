@@ -1,8 +1,13 @@
 
 import { FaStar } from "react-icons/fa"
 import { PiImageBrokenFill } from "react-icons/pi"
-import { IoIosAddCircle } from "react-icons/io"
+import { IoIosAddCircle, IoIosCheckmarkCircle } from "react-icons/io"
 import { Movie } from "../App"
+
+interface CardProps extends Movie {
+    addToWatchList: (id: string) => void,
+    isInWatchList: boolean
+}
 
 export default function Card({ 
     id,
@@ -12,8 +17,10 @@ export default function Card({
     voteAvg,
     voteCount,
     popularity,
-    releaseDate
-}: Movie) {
+    releaseDate,
+    addToWatchList,
+    isInWatchList
+}: CardProps) {
     const imgElement = new Image()
     imgElement.src = imgUrl
     return <div className="card">
@@ -25,7 +32,7 @@ export default function Card({
             <div>
                 <span></span>
                 <span></span>
-                <button><IoIosAddCircle />Watchlist</button>
+                <button onClick={()=>addToWatchList(id)} className={isInWatchList ? "active" : ""}>{isInWatchList ? <IoIosCheckmarkCircle /> : <IoIosAddCircle />}Watchlist</button>
             </div>
             <div>
                 <p>{overview}</p>

@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react"
 import { IoSearch } from "react-icons/io5"
+import { useDebounce } from "../hooks/useDebounce"
 
 interface SearchProps {
     searchText: string,
@@ -8,13 +9,12 @@ interface SearchProps {
 
 export default function SearchBar({searchText, setSearchText}: SearchProps) {
     const [inputText, setInputText] = useState('')
+    const debounced = useDebounce(inputText, 500)
 
     
     useEffect(() => {
-        const searchTimeOut = setTimeout(() => setSearchText(inputText), 500)
-
-        return () => clearTimeout(searchTimeOut)
-    }, [inputText, setInputText])
+        setSearchText(debounced)
+    }, [debounced, setSearchText])
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>):void => {
         setInputText(e.target.value)
