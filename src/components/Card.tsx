@@ -5,7 +5,7 @@ import { IoIosAddCircle, IoIosCheckmarkCircle } from "react-icons/io"
 import { Movie } from "../App"
 
 interface CardProps extends Movie {
-    addToWatchList: (id: string) => void,
+    toggleAddToWatchList: (id: string) => void,
     isInWatchList: boolean
 }
 
@@ -18,7 +18,7 @@ export default function Card({
     voteCount,
     popularity,
     releaseDate,
-    addToWatchList,
+    toggleAddToWatchList,
     isInWatchList
 }: CardProps) {
     const imgElement = new Image()
@@ -32,7 +32,7 @@ export default function Card({
             <div>
                 <span></span>
                 <span></span>
-                <button onClick={()=>addToWatchList(id)} className={isInWatchList ? "active" : ""}>{isInWatchList ? <IoIosCheckmarkCircle /> : <IoIosAddCircle />}Watchlist</button>
+                <button onClick={()=>toggleAddToWatchList(id)} className={isInWatchList ? "active" : ""}>{isInWatchList ? <IoIosCheckmarkCircle /> : <IoIosAddCircle />}Watchlist</button>
             </div>
             <div>
                 <p>{overview}</p>
