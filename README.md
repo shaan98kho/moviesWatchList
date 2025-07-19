@@ -88,3 +88,9 @@ Type in the search bar; results will show after a 500 ms debounce.
 
 - Toggle Watchlist
 Click the “+” button on any card to add it to your watchlist. It turns into a “✔” when added.
+
+
+## 🎨 Design
+
+This UI is based on a Figma template provided in the [Scrimba Project](https://scrimba.com/projects) section. 
+Everything else is all implemented and written by me.
