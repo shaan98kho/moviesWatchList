@@ -1,70 +1,90 @@
-# Getting Started with Create React App
+# 🎬 Movie Watchlist
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A **React** app that lets you browse, search, and save your favorite movies from [The Movie Database (TMDB)](https://www.themoviedb.org/). Features include:
 
-## Available Scripts
+- 🔥 **Infinite scroll** through popular movies
+- 🔍 **Debounced search** across the TMDB popular movies catalog
+- ⭐️ **Add / Remove** movies to your personal watchlist
+- 📦 Built with **Create React App** and **TypeScript**
+- ⚙️ Configurable via environment variables
 
-In the project directory, you can run:
+---
 
-### `npm start`
+## 🚀 Live Demo
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+> https://movies-watch-list-lime.vercel.app/
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+---
 
-### `npm test`
+## 📂 Project Structure
+```bash
+moviesWatchlist/
+├── public/
+│ └── index.html
+├── src/
+│ ├── components/
+│ │ ├── Card.tsx
+│ │ ├── Header.tsx
+│ │ └── SearchBar.tsx
+│ ├── hooks/
+│ │ └── useDebounced.ts
+│ ├── App.tsx
+│ ├── index.tsx
+│ └── react-app-env.d.ts
+├── .env.local
+├── package.json
+├── tsconfig.json
+└── README.md
+```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+---
 
-### `npm run build`
+## 🔧 Features
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- **Fetch Popular Movies**  
+  Uses TMDB’s `/3/movie/popular` endpoint, with API key in a Bearer header.
+- **Search Movies**  
+  Debounced client‐side search calling TMDB’s `/3/search/movie` endpoint.
+- **Infinite Scroll**  
+  Automatically loads more pages as you scroll near the bottom.
+- **Watchlist**  
+  Click the “+” button on any movie card to add it to your watchlist; click again to remove.  
+  ✔️ Cards show a checkmark when in your watchlist.
+- **TypeScript**  
+  Fully typed components and hooks for maximum safety and DX.
+- **Environment Variables**  
+  Keeps your TMDB API key out of source control.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+---
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## 📦 Installation
 
-### `npm run eject`
+1. **Clone this repo**  
+   ```bash
+   git clone https://github.com/your-username/moviesWatchlist.git
+   cd moviesWatchlist
+2. **Install dependencies**
+   ```bash
+   npm install
+3. **Create your TMDB .env.local**
+   Create a file at the project root called .env.local with:
+   ```bash
+   REACT_APP_TMDB_API_KEY=<your TMDB v4 Read Access Token>
+5. **Run in development**
+   ```bash
+   npm start
+7. **Build for production**
+   ```bash
+   npm run build
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+---
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## 🛠️ Usage
+- Browse Popular
+The home screen loads page 1 of popular movies. Scroll down to load more.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+- Search
+Type in the search bar; results will show after a 500 ms debounce.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- Toggle Watchlist
+Click the “+” button on any card to add it to your watchlist. It turns into a “✔” when added.
